@@ -16,8 +16,9 @@ if(isset($_POST["attendance"]))
 if(isset($_POST["coursename"])){
     $name=$_POST["coursename"];
     $description=$_POST["coursedescription"];
+	$credit = $_POST['credit'];
 
-    mysqli_query($link, "insert into course(NAME,DESCRIPTION,ADDEDBY,ADDEDDATE)values('$name','$description','$activeuserid','$currenttime')");
+    mysqli_query($link, "insert into course(NAME,DESCRIPTION,ADDEDBY,ADDEDDATE,CREDIT_HOURS)values('$name','$description', '$activeuserid','$currenttime', '$credit')");
     $_SESSION['user_success_message'] = "A course has successfully been added";
     $userurl='index.php?page=add_course';
     echo '<script>window.location = "'.$userurl.'";</script>';
@@ -102,6 +103,10 @@ if(isset($_SESSION['user_failure_message'])){
                         <div class="control-group">
                             <label for="colorpicker1">Course Name</label><br>
                             <input type="text" name="coursename" placeholder="Enter Course Name" /><br><br>
+                            
+                            <label for="colorpicker1">Credit Hours</label><br>
+                            <input type="number" name="credit" min="1" max="7" placeholder="Enter Credit Hours"/>
+                            <br><br>
 
                             <label for="colorpicker1">Course Description</label><br>
                             <textarea name="coursedescription" rows="5" placeholder="Enter Course description"></textarea><br><br>
@@ -116,8 +121,10 @@ if(isset($_SESSION['user_failure_message'])){
         <table id="simple-table" class="table table-striped table-bordered table-hover no-margin-bottom no-border-top">
             <thead>
                 <tr>
+                    <th>Course ID</th>
                     <th>Course</th>
                     <th class="hidden-480">Description</th>
+                    <th>Credit Hours</th>
                     <th>
                         <i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
                         Added Date
@@ -132,8 +139,10 @@ if(isset($_SESSION['user_failure_message'])){
                     while($row=$result->fetch_assoc()){
                         echo"
 							<tr>
+								<td>".$row["COURSEID"]."</td>
 								<td>".$row["NAME"]."</td>
 								<td class='hidden-480'>".$row["DESCRIPTION"]."</td>
+								<td>".$row["CREDIT_HOURS"]."</td>
 								<td class='hidden-480'>
 									<span class='label label-sm label-warning'>".date('F j, Y H:i:s',strtotime($row["ADDEDDATE"]))."</span>
 								</td>

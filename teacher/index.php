@@ -8,7 +8,7 @@ if(isset($_SESSION['activeuserid'])){
 $currenttime=date("Y-m-d H:i:s",strtotime(date("Y-m-d H:i:s"))+3600*3);
 
 //-----------check account
-if($_SESSION['account']=="TEACHER"){
+if($_SESSION['account']=="TEACHER" || $_SESSION['account']=="ADMIN"){
 	
 }else{
 	$url='../index.php';
@@ -56,7 +56,13 @@ include 'header.php';
 								break;
                                 case 'marks': include('studentmarks.php');
 								break;
-								default: include('dashboard.php');
+								default:
+								if ($_SESSION['account']=="TEACHER"){
+									include('dashboard.php');
+								}else{
+									include('pending_requests.php');
+								}
+								
 								break;
 								}
 								

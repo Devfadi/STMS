@@ -36,21 +36,21 @@ while($row = mysqli_fetch_array($result)){
                 <td>'.$row['FIRSTNAME'].'</td>
                 <td>'.$row['LASTNAME'].'</td>
                 <td>
-                <input class="quiz" value='.$quiz.' type="text" name="quiz'.$key.'">
+                <input class="quiz marks" value='.$quiz.' type="number" name="quiz'.$key.'" min="0" max="5" onchange="calculate_marks(this)">
                 </td>
-                <td><input class="assignment" value='.$assignment.' type="text" name="assignment'.$key.'"></td>
+                <td><input class="assignment marks" value='.$assignment.' type="number" name="assignment'.$key.'" min="0" max="5" onchange="calculate_marks(this)"></td>
                 
-                <td><input  class="attendance" value='.$attendance.' type="text" name="attendance'.$key.'"></td>
+                <td><input  class="attendance marks" value='.$attendance.' type="number" name="attendance'.$key.'" min=0" max="10" onchange="calculate_marks(this)"></td>
                 
-                <td><input class="mid" value='.$mid.' type="text" name="mid'.$key.'"></td>
+                <td><input class="mid marks" value='.$mid.' type="number" name="mid'.$key.'" min="0" max="20"  onchange="calculate_marks(this)"></td>
                 
-                <td><input class="final" value='.$final.' type="text" name="final'.$key.'"></td>
+                <td><input class="final marks" value='.$final.' type="number" name="final'.$key.'" min="0" max="60" onchange="calculate_marks(this)"></td>
                 
-                <td><input class="obtained"  value='.$obtained.' type="text" name="obtained'.$key.'"></td>
+                <td><input class="obtained"  value='.$obtained.' type="number" name="obtained'.$key.'" readonly></td>
                     
                 
-                <td><input class="total"  value="100" type="text" name="total'.$key.'" readonly></td>
-                <td><input class="gpa" value='.$gpa.' type="text" name="gpa'.$key.'"></td>
+                <td><input class="total"  value="100" type="number" name="total'.$key.'" readonly></td>
+                <td><input class="gpa" value='.$gpa.' type="number" name="gpa'.$key.'" step="0.01"></td>
                 
                 
                 

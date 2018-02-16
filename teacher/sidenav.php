@@ -57,7 +57,10 @@ echo"
 				</a>
 
 				<b class='arrow'></b>
-			</li>
+			</li>";
+			
+			if($_SESSION['account']!="ADMIN"){
+			echo"
 			<li class='";
 				if($window=='add_course' || $window=='student_requests'){
 					echo 'active open';
@@ -235,7 +238,35 @@ echo"
 						<b class='arrow'></b>
 					</li>
 				</ul>
-			</li>
+			</li>";
+			}else{
+				echo"
+				<li class='";
+				if($window=='pending_requests'){
+					echo 'active open';
+				}else{
+				}
+				echo"'>
+				<a href='#' class='dropdown-toggle'>
+					<i class='menu-icon fa fa-pie-chart'></i>
+					<span class='menu-text'>Request</span>
+
+					<b class='arrow fa fa-angle-down'></b>
+				</a>
+				<b class='arrow'></b>
+				<ul class='submenu'>
+					<li class=''>
+						<a href='index.php?page=pending_requests'>
+							<i class='menu-icon fa fa-caret-right'></i>
+							Pending Requests
+						</a>
+						<b class='arrow'></b>
+					</li>
+				</ul>
+			</li>";
+				
+			}
+			echo"
 		</ul><!-- /.nav-list -->";
 ?>		
 

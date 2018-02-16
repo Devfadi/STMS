@@ -138,6 +138,32 @@ echo"
 					
 				</ul>
 			</li>
+			
+				<li class='";
+				if($window=='lectures'){
+					echo 'active open';
+				}else{
+				}
+				echo"'>
+				<a href='#' class='dropdown-toggle'>
+					<i class='menu-icon fa fa-random'></i>
+					<span class='menu-text'>Lectures</span>
+
+					<b class='arrow fa fa-angle-down'></b>
+				</a>
+				<b class='arrow'></b>
+				<ul class='submenu'>
+					
+					<li class=''>
+						<a href='index.php?page=lectures'>
+							<i class='menu-icon fa fa-caret-right'></i>
+							Show Lectures
+						</a>
+						<b class='arrow'></b>
+					</li>
+				</ul>
+			</li>
+			
 		</ul><!-- /.nav-list -->";
 ?>		
 

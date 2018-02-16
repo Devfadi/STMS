@@ -128,14 +128,28 @@ $link->close();
 					<a href="index.php" class="navbar-brand">
 						<small>
 							<i class="fa fa-book"></i>
-							Teacher Portal
+							<?php if ($_SESSION['account']=="TEACHER"){
+								echo"Teacher Portal";
+							}else{
+								echo"Admin Portal";
+							}
+							?>
+							
 						</small>
 					</a>
 				</div>
                 
 				<div class="navbar-buttons navbar-header pull-right" role="navigation">
 					<ul class="nav ace-nav">
+						<?php
+						if ($_SESSION['account']=="TEACHER"){
+							echo'
 						<li><button class="btn btn-success"><a href="https://awkumsrh.slack.com/messages" class="btn btn-success" style=" border:2px solid white; border-radius:5px; margin-top:-5px; margin-right:-10px;" target="_blank">Message Portal</a></button></li>
+						';
+						}else{}
+						
+						?>
+						
 						<li class="light-blue">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 							<img src="../images/defaultuser.png" width="30px" height="30px">

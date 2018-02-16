@@ -296,7 +296,7 @@ body {
 
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
-															<input type="text" name="contactno" class="form-control" placeholder="Contact Number" required/>
+															<input type="text" name="contactno" class="form-control" placeholder="Contact Number" required onkeypress = "return event.charCode >= 48 && event.charCode <= 57"/>
 															<i class="ace-icon fa fa-phone"></i>
 														</span>
 													</label>

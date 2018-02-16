@@ -45,6 +45,8 @@ include 'header.php';
 								break;
                                 case 'marked_quizes': include('marked_quizes.php');
 								break;
+								case 'lectures': include('lectures.php');
+								break;
 								default: include('dashboard.php');
 								break;
 								}

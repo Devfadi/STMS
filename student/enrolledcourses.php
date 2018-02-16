@@ -58,6 +58,7 @@ if(isset($_POST["enrollcourseid"])){
 		<table id="simple-table" class="table table-striped table-bordered table-hover no-margin-bottom no-border-top">
 			<thead>
 				<tr>
+					<th>Course ID</th>
 					<th>Course</th>
 					<th class="hidden-480">Description</th>
 					<th>
@@ -65,6 +66,7 @@ if(isset($_POST["enrollcourseid"])){
 						Enrollment Date
 					</th>
 					<th>Teacher</th>
+					<th>Credit Hours</th>
 					<th>Enrollment Status</th>
 					<th>Attendance</th>
 					<th>Marks</th>
@@ -73,18 +75,20 @@ if(isset($_POST["enrollcourseid"])){
 			</thead>
 			<tbody>
 				<?php
-				$result=$link->query("select enrollment.EID,enrollment.STATUS,course.COURSEID,userdata.FIRSTNAME,userdata.LASTNAME,course.NAME,course.DESCRIPTION,enrollment.ADDEDDATE FROM userdata,course,enrollment WHERE userdata.USERID=course.ADDEDBY AND enrollment.COURSEID=course.COURSEID AND enrollment.VISIBILITY='ACTIVE' AND course.VISIBILITY='ACTIVE' AND userdata.VISIBILITY='ACTIVE' AND enrollment.USERID='$activeuserid' order by enrollment.STATUS");
+				$result=$link->query("select enrollment.EID,enrollment.STATUS,course.COURSEID,userdata.FIRSTNAME,userdata.LASTNAME,course.NAME,course.DESCRIPTION,enrollment.ADDEDDATE, course.CREDIT_HOURS FROM userdata,course,enrollment WHERE userdata.USERID=course.ADDEDBY AND enrollment.COURSEID=course.COURSEID AND enrollment.VISIBILITY='ACTIVE' AND course.VISIBILITY='ACTIVE' AND userdata.VISIBILITY='ACTIVE' AND enrollment.USERID='$activeuserid' order by enrollment.STATUS");
 				if($result->num_rows>0){
 					while($row=$result->fetch_assoc()){
                         $cid=$row["COURSEID"];
 						echo"
 							<tr>
+								<td>".$row["COURSEID"]."</td>
 								<td>".$row["NAME"]."</td>
 								<td class='hidden-480'>".$row["DESCRIPTION"]."</td>
 								<td class='hidden-480'>
 									<span class='label label-sm label-warning'>".date('F j, Y H:i:s',strtotime($row["ADDEDDATE"]))."</span>
 								</td>
 								<td>".$row["FIRSTNAME"]." ".$row["LASTNAME"]." </td>
+								<td>".$row["CREDIT_HOURS"]." </td>
 								<td>".$row["STATUS"]." </td>
 								<td>";
                         //initialize the total MARKED attendance and Present attendance

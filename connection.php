@@ -3,7 +3,7 @@
 $host="localhost";
 $user="root";
 $pass="";
-$db="imad";
+$db="STMS";
 
 $link = new mysqli($host,$user,$pass,$db);
 if (mysqli_connect_errno()){

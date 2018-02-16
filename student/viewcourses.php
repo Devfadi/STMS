@@ -66,6 +66,7 @@ if(isset($_POST["enrollcourseid"])){
 		<table id="simple-table" class="table table-striped table-bordered table-hover no-margin-bottom no-border-top">
 			<thead>
 				<tr>
+					<th>Course ID</th>
 					<th>Course</th>
 					<th class="hidden-480">Description</th>
 					<th>
@@ -83,6 +84,7 @@ if(isset($_POST["enrollcourseid"])){
 					while($row=$result->fetch_assoc()){
 						echo"
 							<tr>
+								<td>".$row["COURSEID"]."</td>
 								<td>".$row["NAME"]."</td>
 								<td class='hidden-480'>".$row["DESCRIPTION"]."</td>
 								<td class='hidden-480'>

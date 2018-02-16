@@ -25,7 +25,7 @@
 		?>
 		<div class='row'>
 			<div class='col-sm-12' >
-				<img src='../images/student.png' height='600' width='100%'>
+				<img src='../images/students.jpg' height='600' width='100%'>
 			</div>
 		</div>
 	</body>

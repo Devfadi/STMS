@@ -6,7 +6,7 @@ if (isset($_POST['email'], $_POST['password'])){
 $email=$_POST['email'];
 $password=md5($_POST['password']);
 
-$sql ="SELECT * FROM userdata WHERE EMAIL='".$email."' AND (PASSWORD='".$password."' OR TEMPASSWORD='".$password."')  AND VISIBILITY='ACTIVE' ";
+$sql ="SELECT * FROM userdata WHERE EMAIL='".$email."' AND (PASSWORD='".$password."' OR TEMPASSWORD='".$password."')  AND VISIBILITY='ACTIVE' AND STATUS='ACTIVE' ";
 $result = $link->query($sql);
 if ($result->num_rows > 0) {
     // echo "YOU'RE SUCCESSFULLY LOGIN";
@@ -14,7 +14,7 @@ while($row = $result->fetch_assoc()){
 	$_SESSION['activeuserid']=$row["USERID"];
 	$_SESSION['account']=$row["ACCOUNT"];
 	
-	if($row["ACCOUNT"]=="TEACHER"){
+	if($row["ACCOUNT"]=="TEACHER" || $row["ACCOUNT"]=="ADMIN"){
 		$url='teacher/index.php';
 		echo '<script>window.location = "'.$url.'";</script>';
 	}elseif($row["ACCOUNT"]=="STUDENT"){
